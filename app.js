@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended:false}))
 //一定要在路由之前封装res.cc函数 否则访问不到
 app.use((req,res,next)=>{
     res.cc = function(err,code = 401){
-        res.send({
+        res.status(code).send({
             code,
             message: err instanceof Error ? err.message : err,
         })
